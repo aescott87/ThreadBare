@@ -9,7 +9,8 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
+    background-color: #DBDADB;
+    text-align: center;
     width: 30%;
     height: 250px;
     margin: 20px auto;
@@ -22,7 +23,7 @@ input {
     margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-out {
   background-color: #00acb0;
   border-radius: 4px;
   color: #f8f8f8;
@@ -32,7 +33,7 @@ input {
   cursor: pointer;
 }
 
-.log-in:hover, .log-out:hover, .register:hover {
+.log-out:hover {
   background-color: #008183;
 }
 

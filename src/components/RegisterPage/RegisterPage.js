@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import Button from 'muicss/lib/react/button';
 
 class RegisterPage extends Component {
   state = {
@@ -65,12 +66,9 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            <input
-              className="register"
-              type="submit"
-              name="submit"
-              value="Register"
-            />
+            <Button className="register" type="submit" name="submit" value="Register" color="accent">
+              Register
+            </Button>
           </div>
         </form>
         <center>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'muicss/lib/react/button';
 
 class LoginPage extends Component {
   state = {
@@ -65,21 +66,17 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
+            <Button color="accent">Log In</Button>
           </div>
         </form>
         <center>
+          <p>Not a member?</p>
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+            onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
           >
-            Register
+            Register here
           </button>
         </center>
       </div>
