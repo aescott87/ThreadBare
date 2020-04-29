@@ -7,7 +7,14 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  * GET route template
  */
 router.get('/', (req, res) => {
-
+    console.log('search request', req.query);
+    /*const queryText = 'SELECT title, description FROM movies WHERE id = $1';
+    pool.query(queryText, [req.params.id])
+      .then((result) => { res.send(result.rows[0]); })
+      .catch((error) => {
+        console.log('Error completing SELECT details query', error);
+        res.sendStatus(500);
+    });*/
 });
 
 /**
