@@ -63,8 +63,10 @@ router.post('/', rejectUnauthenticated, (req, res) => {
                 } else {
                     retailerId = result.rows[0].id;
                     console.log('the retailer id is', retailerId);
-                    for(sizeId of sizeIds) {
+                    for(sizeId of selectSizeIds) {
                         for(available of availability) {
+                            console.log('Values added are', retailerId, sizeId, available);
+                            
                             pool.query(`INSERT INTO "retailer_size" ("retailer_id", "size_id", "available") VALUES ($1, $2, $3)`, [retailerId, sizeId, available])
                         }
                     }
