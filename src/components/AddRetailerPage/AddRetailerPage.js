@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import '../App/App.css';
 //import MUI CSS components
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
@@ -122,7 +123,7 @@ class AddRetailerPage extends Component {
         return(
             <>
             <h2>Add a Retailer</h2>
-            <Form onSubmit={(event) => this.handleSubmit(event)}>
+            <Form className="add-retailer" onSubmit={(event) => this.handleSubmit(event)}>
                 <legend>Name:</legend>
                 <Input onChange={(event) => this.handleChange('name', event)}/>
                 <legend>Website:</legend>
