@@ -54,7 +54,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
                     pool.query(`INSERT INTO "retailer" ("name", "website") VALUES ($1, $2) RETURNING "id"`, [req.body.name, req.body.website])
                     .then((insertResult) => {
                         retailerId = insertResult.rows[0].id;
-                        for(sizeId of sizeIds) {
+                        for(sizeId of selectSizeIds) {
                             for(available of availability) {
                                 pool.query(`INSERT INTO "retailer_size" ("retailer_id", "size_id", "available") VALUES ($1, $2, $3)`, [retailerId, sizeId, available])
                             }
