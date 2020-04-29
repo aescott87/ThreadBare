@@ -88,6 +88,18 @@ class SearchPage extends Component {
     });
   }
 
+  handleRetailerSearch = (event) => {
+    event.preventDefault();
+    console.log('in handleRetailerSearch', this.state.retailerQuery);
+    this.props.dispatch({type: 'SEARCH_RETAILER', payload: this.state.retailerQuery})
+  }
+
+  handleSizeSearch = (event) => {
+    event.preventDefault();
+    console.log('in handleSizeSearch', this.state.sizeQuery);
+    this.props.dispatch({type: 'SEARCH_SIZE', payload: this.state.sizeQuery})
+  }
+
   render() {
     return (
       <>
@@ -96,9 +108,12 @@ class SearchPage extends Component {
         </h1>
         <p>Search our list of retailers to find brands that will fit you perfectly.</p>
         <Divider />
-        <Form>
-          <legend>Search by Retailer:</legend>
+        <Form onSubmit={(event) => this.handleRetailerSearch(event)}>
+          <legend>Search by Retailer Name:</legend>
           <Input onChange={(event) => this.handleRetailerChange(event)}/>
+          <Button color="accent">Find Retailer</Button>
+        </Form>
+        <Form onSubmit={(event) => this.handleSizeSearch(event)}>
           <legend>Search by Size:</legend>
           <Checkbox type="checkbox" value={this.state.sizeQuery.plus_size} label="Plus Sizes(12-32)" onChange={this.handlePlusChange}/>
           <Checkbox type="checkbox" value={this.state.sizeQuery.petite_size} label="Petite Sizes(00-0)" onChange={this.handlePetiteChange}/>
@@ -106,7 +121,7 @@ class SearchPage extends Component {
           <Checkbox type="checkbox" value={this.state.sizeQuery.short} label="Short Inseam(28-30)" onChange={this.handleShortChange}/>
           <Checkbox type="checkbox" value={this.state.sizeQuery.long} label="Long Inseam(34-36)" onChange={this.handleLongChange}/>
           <Checkbox type="checkbox" value={this.state.sizeQuery.xlong} label="X-Long Inseam(36 and longer)" onChange={this.handleXLongChange}/>
-          <Button color="accent">Search</Button>
+          <Button  color="accent">Find Sizes</Button>
         </Form>
       </>
     )
