@@ -7,17 +7,55 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  * GET route template
  */
 router.get('/', (req, res) => {
-    console.log('search request', req.query.retailerName);
-    const queryText = `SELECT "name", "website", "available", "type" FROM "retailer"
+    if (req.query.retailerName) {
+        console.log('search query is', req.query.retailerName);
+        const queryText = `SELECT "name", "website", "available", "type" FROM "retailer"
     JOIN "retailer_size" ON "retailer"."id" = "retailer_size"."retailer_id"
     JOIN "size" ON "retailer_size"."size_id" = "size"."id"
     WHERE "name" LIKE ($1);`;
-    pool.query(queryText, [req.query.retailerName])
-      .then((result) => { res.send(result.rows); })
-      .catch((error) => {
-        console.log('Error completing GET retailer query', error);
-        res.sendStatus(500);
-    });
+        pool.query(queryText, [req.query.retailerName])
+            .then((result) => { res.send(result.rows); })
+            .catch((error) => {
+                console.log('Error completing GET retailer query', error);
+                res.sendStatus(500);
+            });
+    } else if (req.query) {
+        console.log('search query is', req.query);
+        const selectSizeIds = [];
+        if (req.query.plus_size === 'true') {
+            selectSizeIds.push(1);
+        }
+        if (req.query.petite_size === 'true') {
+            selectSizeIds.push(2);
+        }
+        if (req.query.xshort === 'true') {
+            selectSizeIds.push(3);
+        }
+        if (req.query.short === 'true') {
+            selectSizeIds.push(4);
+        }
+        if (req.query.long === 'true') {
+            selectSizeIds.push(5);
+        }
+        if (req.query.xlong === 'true') {
+            selectSizeIds.push(6);
+        }
+        let sizeParams = [];
+        for(let i = 0; i < selectSizeIds.length; i++) {
+            sizeParams.push('$' + (i + 1))
+        }
+        console.log('the size ids are', selectSizeIds);
+        const queryText = `SELECT "name", "website", "available", "type" FROM "retailer"
+        JOIN "retailer_size" ON "retailer"."id" = "retailer_size"."retailer_id"
+        JOIN "size" ON "retailer_size"."size_id" = "size"."id"
+        WHERE "size"."id" IN (${sizeParams.join(', ')})`;
+        pool.query(queryText, selectSizeIds)
+            .then((result) => { res.send(result.rows); })
+            .catch((error) => {
+                console.log('Error completing GET size query', error);
+                res.sendStatus(500);
+            });
+    }
 });
 
 /**
