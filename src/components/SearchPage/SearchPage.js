@@ -93,12 +93,14 @@ class SearchPage extends Component {
     event.preventDefault();
     console.log('in handleRetailerSearch', this.state.retailerQuery);
     this.props.dispatch({type: 'SEARCH_RETAILER', payload: this.state.retailerQuery})
+    this.props.history.push('/result');
   }
 
   handleSizeSearch = (event) => {
     event.preventDefault();
     console.log('in handleSizeSearch', this.state.sizeQuery);
     this.props.dispatch({type: 'SEARCH_SIZE', payload: this.state.sizeQuery})
+    this.props.history.push('/result');
   }
 
   render() {

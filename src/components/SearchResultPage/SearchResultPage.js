@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import '../App/App.css';
+//import MUI CSS elements
+import Panel from 'muicss/lib/react/panel';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class SearchResultPage extends Component {
 
-const InfoPage = () => (
-  <div>
-    <p>
-      Info Page
-    </p>
-  </div>
-);
+  handleGoToAdd = () => {
+    this.props.history.push('/add');
+  }
 
-export default InfoPage;
+  handleGoToSearch = () => {
+    this.props.history.push('/search');
+  }
+
+  render() {
+    console.log('search result is', this.props.searchResult);
+    
+    return (
+      <>
+        <h1>Here's what we found...</h1>
+        {this.props.searchResult.map((item) => {
+          return (
+            <Panel>
+              <p><b>Name:</b></p>
+              <p><b>Website:</b></p>
+              <p><b>Sizes Carried:</b></p>
+              <p><b>Where You Can Shop:</b></p>
+            </Panel>
+          )
+        })}
+        <h2>Is there a retailer missing from this list?</h2><h2 onClick={this.handleGoToAdd}>Add to the collection.</h2>
+        <h3>Didn't find what you needed?</h3><h3 onClick={this.handleGoToSearch}>Search again.</h3>
+      </>
+    )
+  }
+}
+
+const mapStateToProps = (reduxStore) => ({
+  searchResult: reduxStore.searchResult.searchList
+});
+
+export default connect(mapStateToProps)(SearchResultPage);
