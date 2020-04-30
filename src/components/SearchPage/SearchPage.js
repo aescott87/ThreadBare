@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import '../App/App.css';
 //import MUI CSS elements
 import Divider from 'muicss/lib/react/divider';
 import Form from 'muicss/lib/react/form';
@@ -103,10 +104,12 @@ class SearchPage extends Component {
   render() {
     return (
       <>
-        <h1 id="welcome">
+      <div className="welcome">
+        <h1>
           Welcome back, {this.props.user.username}! Let's go shopping.
         </h1>
         <p>Search our list of retailers to find brands that will fit you perfectly.</p>
+        </div>
         <Divider />
         <Form onSubmit={(event) => this.handleRetailerSearch(event)}>
           <legend>Search by Retailer Name:</legend>
