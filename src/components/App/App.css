@@ -66,3 +66,17 @@ h2 {
 .welcome {
     text-align: center;
 }
+
+.search-results {
+    background-color: #DBDADB;
+    text-align: center;
+    width: 30%;
+    height: 250px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
+}
+
+.results-body {
+    text-align: center;
+}

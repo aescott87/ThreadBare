@@ -50,7 +50,32 @@ router.get('/', (req, res) => {
         JOIN "size" ON "retailer_size"."size_id" = "size"."id"
         WHERE "size"."id" IN (${sizeParams.join(', ')})`;
         pool.query(queryText, selectSizeIds)
-            .then((result) => { res.send(result.rows); })
+            .then((result) => {
+                const combinedRetailers = [];
+                for(row of result.rows) {
+                    const retailer = {
+                        name: row.name,
+                        website: row.website,
+                        sizes: [row.type],
+                        available: [row.available]
+                    }
+                    let foundRetailer = combinedRetailers.find(function(retailer) {
+                        return retailer.name === row.name;
+                    })
+                    if(foundRetailer === undefined) {
+                        combinedRetailers.push(retailer)
+                    } else {
+                        let foundSize = combinedRetailers.find(function(retailer) {
+                            return retailer.type === row.type;
+                        })
+                        if(foundSize === undefined) {
+                            combinedRetailers.push()
+                        }
+                    }
+                }
+                console.log('new data is', combinedRetailers);
+                
+                res.send(result.rows); })
             .catch((error) => {
                 console.log('Error completing GET size query', error);
                 res.sendStatus(500);
