@@ -14,7 +14,38 @@ router.get('/', (req, res) => {
     JOIN "size" ON "retailer_size"."size_id" = "size"."id"
     WHERE "name" LIKE ($1);`;
         pool.query(queryText, [req.query.retailerName])
-            .then((result) => { res.send(result.rows); })
+            .then((result) => {
+                const combinedRetailers = [];
+                for(row of result.rows) {
+                    const retailer = {
+                        name: row.name,
+                        website: row.website,
+                        sizes: [row.type],
+                        available: [row.available]
+                    }
+                    let foundRetailer = combinedRetailers.find(function(retailer) {
+                        return retailer.name === row.name;
+                    })
+                    if(foundRetailer === undefined) {
+                        combinedRetailers.push(retailer)
+                    } else {
+                        let foundSize = foundRetailer.sizes.find(function(size) {
+                            return size === row.type;
+                        })
+                        if(foundSize === undefined) {
+                            foundRetailer.sizes.push(row.type);
+                        }
+                        let foundAvailable = foundRetailer.available.find(function(available) {
+                            return available === row.available;
+                        })
+                        if(foundAvailable === undefined) {
+                            foundRetailer.available.push(row.available);
+                        }
+                    }
+                }
+                console.log('new data is', combinedRetailers); 
+                res.send(combinedRetailers); 
+            })
             .catch((error) => {
                 console.log('Error completing GET retailer query', error);
                 res.sendStatus(500);
@@ -65,17 +96,22 @@ router.get('/', (req, res) => {
                     if(foundRetailer === undefined) {
                         combinedRetailers.push(retailer)
                     } else {
-                        let foundSize = combinedRetailers.find(function(retailer) {
-                            return retailer.type === row.type;
+                        let foundSize = foundRetailer.sizes.find(function(size) {
+                            return size === row.type;
                         })
                         if(foundSize === undefined) {
-                            combinedRetailers.push()
+                            foundRetailer.sizes.push(row.type);
+                        }
+                        let foundAvailable = foundRetailer.available.find(function(available) {
+                            return available === row.available;
+                        })
+                        if(foundAvailable === undefined) {
+                            foundRetailer.available.push(row.available);
                         }
                     }
                 }
                 console.log('new data is', combinedRetailers);
-                
-                res.send(result.rows); })
+                res.send(combinedRetailers); })
             .catch((error) => {
                 console.log('Error completing GET size query', error);
                 res.sendStatus(500);
