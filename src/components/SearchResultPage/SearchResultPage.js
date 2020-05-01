@@ -11,7 +11,7 @@ class SearchResultPage extends Component {
   }
 
   handleGoToSearch = () => {
-    this.props.history.push('/search');
+    this.props.history.push('/home');
   }
 
   render() {

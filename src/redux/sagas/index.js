@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import postSaga from './postSaga';
 import searchRetailerSaga from './searchRetailerSaga';
 import searchSizeSaga from './searchSizeSaga';
+import getRetailerSaga from './getRetailersSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     postSaga(),
     searchRetailerSaga(),
     searchSizeSaga(),
+    getRetailerSaga(),
   ]);
 }

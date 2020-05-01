@@ -11,4 +11,4 @@ const searchList = (state = [], action) => {
 
 export default combineReducers({
     searchList,
-  });
+});

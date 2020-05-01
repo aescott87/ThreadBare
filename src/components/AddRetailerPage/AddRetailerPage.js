@@ -117,6 +117,7 @@ class AddRetailerPage extends Component {
         event.preventDefault();
         console.log( 'in handleSubmit', this.state);
         this.props.dispatch({type: 'NEW_RETAILER', payload: this.state})
+        this.props.history.push('/home');
     }
 
     render() {
