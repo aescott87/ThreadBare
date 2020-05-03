@@ -6,6 +6,7 @@ import Button from 'muicss/lib/react/button';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Checkbox from 'muicss/lib/react/checkbox';
+import editRetailerSaga from '../../redux/sagas/editSaga';
 
 class AdminPage extends Component {
 
@@ -119,7 +120,7 @@ class AdminPage extends Component {
                     <h2>Enter Changes Below</h2>
                     <Form className="edit-retailer" onSubmit={(event) => this.handleSubmit(event)}>
                         <legend>Name:</legend>
-                        <Input value={this.state.editedRetailer.name} onChange={(event) => this.handleChange('name', event)} />
+                        <p>{retailer.name}</p>
                         <legend>Website:</legend>
                         <Input value={this.state.editedRetailer.website} onChange={(event) => this.handleChange('website', event)} />
                         <div>
