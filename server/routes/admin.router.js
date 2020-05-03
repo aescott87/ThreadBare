@@ -103,5 +103,25 @@ router.put('/', (req, res) => {
         });
 });
 
+router.delete('/:name', (req, res) => {
+    const retailerName = req.params.name;
+    console.log('retailer is', retailerName);
+    const queryText = `SELECT "id" FROM "retailer" WHERE "name" = $1`;
+    pool.query(queryText, [retailerName])
+        .then((result) => {
+            console.log('results are', result.rows);
+            for (row of result.rows) {
+                const deleteRetailerSizeQuery = `DELETE FROM "retailer_size" WHERE "retailer_id" = $1`;
+                const deleteRetailerQuery = `DELETE FROM "retailer" WHERE "id" = $1`;
+                pool.query(deleteRetailerSizeQuery, [row.id])
+                pool.query(deleteRetailerQuery, [row.id])
+            }
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error deleting retailer', error);
+            res.sendStatus(500);
+        });
+});
+
 
 module.exports = router;

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* deleteRetailer(action) {
-    console.log('in deleteRetailer')
+function* deleteRetailer(event) {
+    console.log('in deleteRetailer', event.payload)
     try{
-      yield axios.delete(`/api/admin`);
+      yield axios.delete(`/api/admin/${event.payload.name}`);
       yield put({type: 'GET_ALL_RETAILERS'})
     }
     catch(error) {

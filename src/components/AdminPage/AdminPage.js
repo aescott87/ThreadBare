@@ -115,7 +115,7 @@ class AdminPage extends Component {
                                         <td>{retailer.sizes}</td>
                                         <td>{retailer.available}</td>
                                         <td><Button color="primary" onClick={() => this.toggleEditPanel(retailer)}>Edit</Button></td>
-                                        <td><Button color="primary" onClick={this.handleDelete(retailer)}>Delete</Button></td>
+                                        <td><Button color="primary" onClick={() => this.handleDelete(retailer)}>Delete</Button></td>
                                     </tr>
                                 )
                             })}
