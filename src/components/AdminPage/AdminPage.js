@@ -6,7 +6,6 @@ import Button from 'muicss/lib/react/button';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Checkbox from 'muicss/lib/react/checkbox';
-import editRetailerSaga from '../../redux/sagas/editSaga';
 
 class AdminPage extends Component {
 
@@ -82,6 +81,9 @@ class AdminPage extends Component {
         event.preventDefault();
         console.log('in handleSubmit');
         this.props.dispatch({ type: 'EDIT_RETAILER', payload: this.state.editedRetailer })
+        this.setState({
+            editPanel: false
+        });
     }
 
     render() {
@@ -120,7 +122,7 @@ class AdminPage extends Component {
                     <h2>Enter Changes Below</h2>
                     <Form className="edit-retailer" onSubmit={(event) => this.handleSubmit(event)}>
                         <legend>Name:</legend>
-                        <p>{retailer.name}</p>
+                        <p>{this.state.editedRetailer.name}</p>
                         <legend>Website:</legend>
                         <Input value={this.state.editedRetailer.website} onChange={(event) => this.handleChange('website', event)} />
                         <div>

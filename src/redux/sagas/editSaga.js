@@ -4,8 +4,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* editRetailer(event) {
     console.log('in edit retailer', event);
     try {
-    const response = yield axios.put(`/api/admin`, event.payload);
-    yield put ({type: 'GET_RETAILER', payload: response.data});
+    yield axios.put(`/api/admin`, event.payload);
+    yield put ({type: 'GET_ALL_RETAILERS'});
     }
     catch (error) {
         console.log('Error editing retailer', error);

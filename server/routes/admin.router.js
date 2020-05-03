@@ -52,13 +52,15 @@ router.put('/', (req, res) => {
     const retailer = req.body;
     console.log('retailer is', retailer);
     const queryText = `SELECT "id" FROM "retailer" WHERE "name" = $1`;
-    pool.query(queryText, retailer.name)
+    pool.query(queryText, [retailer.name])
         .then((result) => {
+            console.log('results are', result.rows);
+            
             for (row of result.rows) {
                 const deleteRetailerSizeQuery = `DELETE FROM "retailer_size" WHERE "retailer_id" = $1`;
                 const deleteRetailerQuery = `DELETE FROM "retailer" WHERE "id" = $1`;
-                pool.query(deleteRetailerSizeQuery, row.id)
-                pool.query(deleteRetailerQuery, row.id)
+                pool.query(deleteRetailerSizeQuery, [row.id])
+                pool.query(deleteRetailerQuery, [row.id])
             }
             const selectSizeIds = [];
             if (retailer.sizes.includes('Plus Sizes (12-32)')) {
@@ -99,7 +101,7 @@ router.put('/', (req, res) => {
         }).catch((error) => {
             res.sendStatus(500);
         });
-}
+});
 
 
 module.exports = router;
