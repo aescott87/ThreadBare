@@ -112,8 +112,24 @@ class AdminPage extends Component {
                                     <tr>
                                         <td>{retailer.name}</td>
                                         <td>{retailer.website}</td>
-                                        <td>{retailer.sizes}</td>
-                                        <td>{retailer.available}</td>
+                                        <td>
+                                            {retailer.sizes.map((size) => {
+                                                return (
+                                                    <ul>
+                                                        <li>{size}</li>
+                                                    </ul>
+                                                )
+                                            })}
+                                        </td>
+                                        <td>
+                                            {retailer.available.map((item) => {
+                                                return (
+                                                    <ul>
+                                                        <li>{item}</li>
+                                                    </ul>
+                                                )
+                                            })}
+                                        </td>
                                         <td><Button color="primary" onClick={() => this.toggleEditPanel(retailer)}>Edit</Button></td>
                                         <td><Button color="primary" onClick={() => this.handleDelete(retailer)}>Delete</Button></td>
                                     </tr>

@@ -1,6 +1,10 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-image: url('https://i.pinimg.com/originals/98/c3/f5/98c3f5068e0ebe5a765c81fb589717b0.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .alert {
@@ -67,7 +71,7 @@ input {
     text-align: center;
 }
 
-.search-results, .retailer {
+.search-results, .retailer, .edit-retailer {
     background-color: #DBDADB;
     text-align: center;
     width: 30%;
@@ -75,4 +79,42 @@ input {
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+}
+
+table {
+    background-color: white;
+    border-collapse: collapse;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+ul {
+    list-style-type: none;
+    display: inline;
+    padding: 0px;
+}
+
+table, thead, td {
+    border: 2px solid black;
+}
+
+thead {
+    background-color: rgb(222, 67, 119);
+    color: white;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    text-shadow: 1px 1px 1px white;
+}
+
+b {
+    cursor: pointer;
 }

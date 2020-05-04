@@ -43,8 +43,8 @@ class SearchResultPage extends Component {
               </Panel>
             )
           })}
-          <h2>Is there a retailer missing from this list?</h2><h2 onClick={this.handleGoToAdd}>Add to the collection.</h2>
-          <h3>Didn't find what you needed?</h3><h3 onClick={this.handleGoToSearch}>Search again.</h3>
+          <h2>Is there a retailer missing from this list?</h2><h2 onClick={this.handleGoToAdd}><b>Add to the collection.</b></h2>
+          <h3>Didn't find what you needed?</h3><h3 onClick={this.handleGoToSearch}><b>Search again.</b></h3>
         </div>
       </>
     )
