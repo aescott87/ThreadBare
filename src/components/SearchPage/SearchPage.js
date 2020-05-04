@@ -103,6 +103,10 @@ class SearchPage extends Component {
     this.props.history.push('/result');
   }
 
+  handleGoToList = () => {
+    this.props.history.push('/allretailers');
+  }
+
   render() {
     return (
       <>
@@ -110,8 +114,8 @@ class SearchPage extends Component {
         <h1>
           Welcome back, {this.props.user.username}! Let's go shopping.
         </h1>
-        <p>Search our list of retailers to find brands that will fit you perfectly.</p>
-        
+        <h2>Search our list of retailers to find brands that will fit you perfectly.</h2>
+        <h3>To see our current full list of retailers, click <b onClick={this.handleGoToList}>here</b></h3>
         </div>
         <Divider />
         <Form onSubmit={(event) => this.handleRetailerSearch(event)}>
@@ -119,6 +123,7 @@ class SearchPage extends Component {
           <Input onChange={(event) => this.handleRetailerChange(event)}/>
           <Button color="accent">Find Retailer</Button>
         </Form>
+        <h3>OR</h3>
         <Form onSubmit={(event) => this.handleSizeSearch(event)}>
           <legend>Search by Size:</legend>
           <Checkbox type="checkbox" value={this.state.sizeQuery.plus_size} label="Plus Sizes(12-32)" onChange={this.handlePlusChange}/>

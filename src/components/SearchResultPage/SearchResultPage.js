@@ -19,13 +19,27 @@ class SearchResultPage extends Component {
       <>
         <div className="results-body">
           <h1>Here's what we found...</h1>
-          {this.props.searchResult.map((item) => {
+          {this.props.searchResult.map((retailer) => {
             return (
               <Panel className="search-results">
-                <p><b>Name:</b>{item.name}</p>
-                <p><b>Website:</b>{item.website}</p>
-                <p><b>Sizes Carried:</b>{item.sizes}</p>
-                <p><b>Where You Can Shop:</b>{item.available}</p>
+                <p><b>Name:</b> {retailer.name}</p>
+                <p><b>Website:</b> {retailer.website}</p>
+                <p><b>Sizes Carried:</b></p>
+                {retailer.sizes.map((size) => {
+                  return (
+                    <ul>
+                      <li>{size}</li>
+                    </ul>
+                  )
+                })}
+                <p><b>Where You Can Shop:</b></p>
+                {retailer.available.map((item) => {
+                  return (
+                    <ul>
+                      <li>{item}</li>
+                    </ul>
+                  )
+                })}
               </Panel>
             )
           })}

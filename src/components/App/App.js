@@ -17,6 +17,7 @@ import AdminPage from '../AdminPage/AdminPage';
 import SearchPage from '../SearchPage/SearchPage';
 import SearchResultPage from '../SearchResultPage/SearchResultPage';
 import AddRetailerPage from '../AddRetailerPage/AddRetailerPage';
+import AllRetailersPage from '../AllRetailersPage/AllRetailersPage';
 
 import './App.css';
 

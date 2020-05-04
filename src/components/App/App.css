@@ -59,7 +59,7 @@ input {
     border-radius: 2px;
 }
 
-h2 {
+.results-body, .all-retailers {
     text-align: center;
 }
 
@@ -67,16 +67,12 @@ h2 {
     text-align: center;
 }
 
-.search-results {
+.search-results, .retailer {
     background-color: #DBDADB;
     text-align: center;
     width: 30%;
-    height: 150px;
+    height: auto;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
-}
-
-.results-body {
-    text-align: center;
 }
