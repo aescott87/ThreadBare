@@ -51,6 +51,11 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/allretailers"
+              component={AllRetailersPage}
+            />
+            <ProtectedRoute
+              exact
               path="/add"
               component={AddRetailerPage}
             />

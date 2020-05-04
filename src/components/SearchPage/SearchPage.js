@@ -111,6 +111,7 @@ class SearchPage extends Component {
           Welcome back, {this.props.user.username}! Let's go shopping.
         </h1>
         <p>Search our list of retailers to find brands that will fit you perfectly.</p>
+        
         </div>
         <Divider />
         <Form onSubmit={(event) => this.handleRetailerSearch(event)}>
