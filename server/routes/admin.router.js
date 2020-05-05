@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectNonAdmin } = require('../modules/admin-authentication-middleware');
 
-router.get('/', (req, res) => {
+router.get('/', rejectNonAdmin, (req, res) => {
     console.log('in admin GET');
     const queryText = `SELECT "retailer"."id", "name", "website", "available", "type" FROM "retailer"
     JOIN "retailer_size" ON "retailer"."id" = "retailer_size"."retailer_id"
@@ -48,7 +48,7 @@ router.get('/', (req, res) => {
         });
 });
 
-router.put('/', (req, res) => {
+router.put('/', rejectNonAdmin, (req, res) => {
     const retailer = req.body;
     console.log('retailer is', retailer);
     const queryText = `SELECT "id" FROM "retailer" WHERE "name" = $1`;
@@ -103,7 +103,7 @@ router.put('/', (req, res) => {
         });
 });
 
-router.delete('/:name', (req, res) => {
+router.delete('/:name', rejectNonAdmin, (req, res) => {
     const retailerName = req.params.name;
     console.log('retailer is', retailerName);
     const queryText = `SELECT "id" FROM "retailer" WHERE "name" = $1`;

@@ -18,6 +18,7 @@ import SearchPage from '../SearchPage/SearchPage';
 import SearchResultPage from '../SearchResultPage/SearchResultPage';
 import AddRetailerPage from '../AddRetailerPage/AddRetailerPage';
 import AllRetailersPage from '../AllRetailersPage/AllRetailersPage';
+import EditRequestPage from '../EditRequestPage/EditRequestPage';
 
 import './App.css';
 
@@ -54,6 +55,11 @@ class App extends Component {
               exact
               path="/allretailers"
               component={AllRetailersPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/edit"
+              component={EditRequestPage}
             />
             <ProtectedRoute
               exact

@@ -18,6 +18,10 @@ class AllRetailersPage extends Component {
         this.props.history.push('/add');
     }
 
+    handleGoToEdit = () => {
+        this.props.history.push('/edit');
+    }
+
     render() {
         return (
             <>
@@ -48,7 +52,8 @@ class AllRetailersPage extends Component {
                         )
                     })}
                 </div>
-                <h2>Is there a retailer missing from this list?</h2><h2><b onClick={this.handleGoToAdd}>Add</b> to the collection.</h2>
+                <h2>Is there a retailer missing from this list?</h2> <h2><b onClick={this.handleGoToAdd}>Add</b> to the collection.</h2>
+                <h2>See something wrong?</h2> <h2>Let us know <b onClick={this.handleGoToEdit}>here.</b></h2>
             </>
         )
     }

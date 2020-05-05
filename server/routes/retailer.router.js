@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.query.retailerName) {
         console.log('search query is', req.query.retailerName);
         const queryText = `SELECT "name", "website", "available", "type" FROM "retailer"
