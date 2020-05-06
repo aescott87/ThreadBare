@@ -9,6 +9,8 @@ import getRetailerSaga from './getRetailersSaga';
 import editRetailerSaga from './editSaga';
 import deleteRetailerSaga from './deleteRetailerSaga';
 import addFeedbackSaga from './addFeedbackSaga';
+import getFeedbackSaga from './getFeedbackSaga';
+import deleteFeedbackSaga from './deleteFeedbackSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -29,5 +31,7 @@ export default function* rootSaga() {
     editRetailerSaga(),
     deleteRetailerSaga(),
     addFeedbackSaga(),
+    getFeedbackSaga(),
+    deleteFeedbackSaga(),
   ]);
 }

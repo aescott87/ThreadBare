@@ -84,7 +84,7 @@ input {
 table {
     background-color: white;
     border-collapse: collapse;
-    display: inline-block;
+    display: inline-flexbox;
     justify-content: center;
     align-items: center;
     margin: auto;

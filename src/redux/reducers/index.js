@@ -4,7 +4,8 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import searchResult from './searchResultReducer';
 import addMessage from './postReducer';
-import getRetailers from './getRetailersReducer'
+import getRetailers from './getRetailersReducer';
+import getFeedback from './getFeedbackReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   searchResult,
   addMessage,
   getRetailers,
+  getFeedback,
 });
 
 export default rootReducer;

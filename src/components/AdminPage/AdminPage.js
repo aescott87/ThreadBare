@@ -24,6 +24,7 @@ class AdminPage extends Component {
 
     componentDidMount() {
         this.getAllRetailers();
+        this.getFeedback();
     }
 
     getAllRetailers = () => {
@@ -90,6 +91,14 @@ class AdminPage extends Component {
         this.props.dispatch({ type: 'DELETE_RETAILER', payload: retailer })
     }
 
+    getFeedback = () => {
+        this.props.dispatch({ type: 'GET_ALL_FEEDBACK' });
+    }
+
+    deleteFeedback = (item) => {
+        this.props.dispatch({ type: 'DELETE_FEEDBACK', payload: item })
+    }
+
     render() {
         return (
             <>
@@ -138,6 +147,31 @@ class AdminPage extends Component {
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    <h2>Edit Requests</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Retailer Name</th>
+                                <th>Issue</th>
+                                <th>Details</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.feedback.map((item) => {
+                                return (
+                                    <tr key={item.id}>
+                                        <td>{item.retailer}</td>
+                                        <td>{item.issue_type}</td>
+                                        <td>{item.details}</td>
+                                        <td><Button color="primary" onClick={() => this.deleteFeedback(item)}>Delete</Button></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
                 {this.state.editPanel ? <>
                     <h2>Enter Changes Below</h2>
                     <Form className="edit-retailer" onSubmit={(event) => this.handleSubmit(event)}>
@@ -166,7 +200,8 @@ class AdminPage extends Component {
 }
 
 const mapStateToProps = (reduxStore) => ({
-    retailers: reduxStore.getRetailers.getRetailers
+    retailers: reduxStore.getRetailers.getRetailers,
+    feedback: reduxStore.getFeedback.getFeedback
 });
 
 export default connect(mapStateToProps)(AdminPage);
