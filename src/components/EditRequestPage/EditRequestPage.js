@@ -40,6 +40,13 @@ class EditRequestPage extends Component {
         })
     }
 
+    handleAddFeedback = (event) => {
+        event.preventDefault();
+        this.props.dispatch({type: 'ADD_FEEDBACK', payload: this.state.feedback})
+        alert('Thank you for letting us know. We will address this issue as soon as possible.')
+        this.props.history.push('/home');
+    }
+
     render() {
         return (
             <>
@@ -48,7 +55,7 @@ class EditRequestPage extends Component {
                 Please let us know below what needs to be corrected and we will address as soon as possible.
             </h2>
                 <Divider />
-                <Form>
+                <Form onSubmit={(event) => this.handleAddFeedback(event)}>
                     <legend>Retailer:</legend>
                     <Input value={this.state.feedback.retailer} onChange={(event) => this.handleChange('retailer', event)}/>
                     <legend>Issue Type:</legend>
@@ -60,7 +67,7 @@ class EditRequestPage extends Component {
                     </Dropdown>
                     <legend>Correct Info:</legend>
                     <Textarea label="Please provide the correct information on this issue" onChange={(event) => this.handleChange('details', event)}/>
-                    <Button color="accent">Submit</Button>
+                    <Button color="accent" type="submit">Submit</Button>
                 </Form>
             </>
         )
