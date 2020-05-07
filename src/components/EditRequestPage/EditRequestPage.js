@@ -43,8 +43,7 @@ class EditRequestPage extends Component {
     handleAddFeedback = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'ADD_FEEDBACK', payload: this.state.feedback})
-        alert('Thank you for letting us know. We will address this issue as soon as possible.')
-        this.props.history.push('/home');
+        this.props.history.push('/confirmation');
     }
 
     render() {

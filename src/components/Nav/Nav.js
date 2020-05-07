@@ -29,7 +29,11 @@ const Nav = (props) => (
           </Link>
           </Button>
           <LogOutButton className="nav-right" />
-          <Button>
+        </>
+      )}
+      {props.user.admin && (
+        <>
+        <Button>
             <Link to="/admin">
               Admin
           </Link>

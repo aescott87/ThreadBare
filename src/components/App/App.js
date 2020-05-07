@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, useReducer } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -19,12 +19,13 @@ import SearchResultPage from '../SearchResultPage/SearchResultPage';
 import AddRetailerPage from '../AddRetailerPage/AddRetailerPage';
 import AllRetailersPage from '../AllRetailersPage/AllRetailersPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
+import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
 
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -68,6 +69,11 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/confirmation"
+              component={ConfirmationPage}
+            />
+            <ProtectedRoute
+              exact
               path="/admin"
               component={AdminPage}
             />
@@ -77,7 +83,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);

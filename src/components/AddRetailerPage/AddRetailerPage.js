@@ -117,8 +117,7 @@ class AddRetailerPage extends Component {
         event.preventDefault();
         console.log( 'in handleSubmit', this.state);
         this.props.dispatch({type: 'NEW_RETAILER', payload: this.state})
-        alert('Thank you for your submission!')
-        this.props.history.push('/home');
+        this.props.history.push('/confirmation');
     }
 
     render() {
