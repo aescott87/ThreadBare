@@ -71,7 +71,7 @@ input {
     text-align: center;
 }
 
-.search-results, .retailer, .edit-retailer, .page-buttons, .link-suggestions {
+.retailer, .edit-retailer, .page-buttons, .link-suggestions {
     background-color: #DBDADB;
     text-align: center;
     width: 30%;
@@ -79,6 +79,18 @@ input {
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+}
+
+.search-results {
+    background-color: white;
+    text-align: center;
+    width: 30%;
+    height: auto;
+    margin: 20px auto;
+    padding: 25px;
+    border-style: solid;
+    border-width: medium;
+    border-color: rgb(222, 67, 119);
 }
 
 .retailer p {

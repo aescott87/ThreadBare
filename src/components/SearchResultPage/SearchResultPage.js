@@ -27,7 +27,7 @@ class SearchResultPage extends Component {
             return (
               <Panel className="search-results">
                 <p><b>Name:</b> {retailer.name}</p>
-                <p><b>Website:</b> {retailer.website}</p>
+                <p><b>Website:</b></p> <a href={retailer.website}>Click to Shop</a> 
                 <p><b>Sizes Carried:</b></p>
                 {retailer.sizes.map((size) => {
                   return (

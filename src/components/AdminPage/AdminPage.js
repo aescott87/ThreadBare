@@ -85,6 +85,7 @@ class AdminPage extends Component {
         this.setState({
             editPanel: false
         });
+        this.getAllRetailers();
     }
 
     handleDelete = (retailer) => {
