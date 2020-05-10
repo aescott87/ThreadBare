@@ -29,7 +29,7 @@ class AddRetailerPage extends Component {
     handleChange = (propertyName, event) => {
         console.log('in handleChange', event.target.value);
         this.setState({
-          [propertyName]: event.target.value
+          [propertyName]: event.target.value.toLowerCase()
         })
     }
 

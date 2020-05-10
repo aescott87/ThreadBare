@@ -47,9 +47,11 @@ class SearchResultPage extends Component {
               </Panel>
             )
           })}
+          <Panel className="link-suggestions">
           <h2>Is there a retailer missing from this list?</h2><h2 onClick={this.handleGoToAdd}><b>Add to the collection.</b></h2>
           <h3>Didn't find what you needed?</h3><h3 onClick={this.handleGoToSearch}><b>Search again.</b></h3>
           <h3>See something that's not right?</h3><h3 onClick={this.handleGoToEdit}><b>Let us know</b></h3>
+          </Panel>
         </div>
       </>
     )

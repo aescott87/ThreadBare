@@ -71,7 +71,7 @@ input {
     text-align: center;
 }
 
-.search-results, .retailer, .edit-retailer, .page-buttons {
+.search-results, .retailer, .edit-retailer, .page-buttons, .link-suggestions {
     background-color: #DBDADB;
     text-align: center;
     width: 30%;
@@ -79,6 +79,14 @@ input {
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+}
+
+.retailer p {
+    margin: 0.75px;
+}
+
+.search-results p {
+    margin: 0.75px;
 }
 
 table {
