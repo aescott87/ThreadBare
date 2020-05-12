@@ -20,6 +20,7 @@ class EditRequestPage extends Component {
         }
     }
 
+    //Handles change in text inputs
     handleChange = (propName, event) => {
         console.log('in handleChange', event);
         this.setState({
@@ -30,6 +31,7 @@ class EditRequestPage extends Component {
         })
     }
 
+    //Handles selection of option in the dropdown menu
     handleSelect = (event) => {
         console.log('in handleSelect');
         this.setState({
@@ -40,6 +42,7 @@ class EditRequestPage extends Component {
         })
     }
 
+    //Sends feedback to Add Feedback Saga to add to DB, sends user to the Confirmation page
     handleAddFeedback = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'ADD_FEEDBACK', payload: this.state.feedback})

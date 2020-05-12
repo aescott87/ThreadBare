@@ -7,10 +7,12 @@ import Panel from 'muicss/lib/react/panel';
 
 class ConfirmationPage extends Component {
 
+    //Sends user to the Add a Retailer page
     handleGoToAdd = () => {
         this.props.history.push('/add');
     }
 
+    //Sends user to the Search page
     handleGoToSearch = () => {
         this.props.history.push('/home');
     }

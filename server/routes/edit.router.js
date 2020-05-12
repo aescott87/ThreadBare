@@ -4,6 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const { rejectNonAdmin } = require('../modules/admin-authentication-middleware');
 
+//POST edit request from user
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('feedback is', req.body);
     const feedback = req.body;
@@ -19,6 +20,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         });
 })
 
+//GET all edit requests to the Admin
 router.get('/', rejectNonAdmin, (req, res) => {
     console.log('in GET feedback');
     const queryText = `SELECT * FROM "edit_form"`;
@@ -32,6 +34,7 @@ router.get('/', rejectNonAdmin, (req, res) => {
         });
 })
 
+//DELETE allows Admin to delete any resolved edit requests
 router.delete('/:id', rejectNonAdmin, (req, res) => {
     const id = req.params.id;
     console.log('feedback id is ', id);

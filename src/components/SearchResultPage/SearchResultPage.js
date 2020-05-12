@@ -6,14 +6,17 @@ import Panel from 'muicss/lib/react/panel';
 
 class SearchResultPage extends Component {
 
+  //Sends user to Add a Retailer page
   handleGoToAdd = () => {
     this.props.history.push('/add');
   }
 
+  //Sends user to Search page
   handleGoToSearch = () => {
     this.props.history.push('/home');
   }
 
+  //Sends user to Edit Request form
   handleGoToEdit = () => {
     this.props.history.push('/edit')
   }

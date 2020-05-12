@@ -22,6 +22,7 @@ class SearchPage extends Component {
     }
   }
 
+  //Handles change of text inputs if search query was by retailer name
   handleRetailerChange = (event) => {
     console.log('in handleRetailerChange', event.target.value);
     this.setState({
@@ -29,6 +30,7 @@ class SearchPage extends Component {
     });
   }
 
+  //Toggles checkbox value to true
   handlePlusChange = () => {
     console.log('in handlePlusChange');
     this.setState({
@@ -89,6 +91,7 @@ class SearchPage extends Component {
     });
   }
 
+  //Sends search query if based on retailer name
   handleRetailerSearch = (event) => {
     event.preventDefault();
     console.log('in handleRetailerSearch', this.state.retailerQuery);
@@ -96,6 +99,7 @@ class SearchPage extends Component {
     this.props.history.push('/result');
   }
 
+  //Sends search query if based on size
   handleSizeSearch = (event) => {
     event.preventDefault();
     console.log('in handleSizeSearch', this.state.sizeQuery);
@@ -103,6 +107,7 @@ class SearchPage extends Component {
     this.props.history.push('/result');
   }
 
+  //Sends user to Search Results page
   handleGoToList = () => {
     this.props.history.push('/allretailers');
   }

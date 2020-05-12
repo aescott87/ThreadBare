@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-// worker Saga: will be fired on "LOGIN" actions
+// Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
   try {
     // clear any existing error on the login page
@@ -23,8 +23,7 @@ function* loginUser(action) {
   } catch (error) {
     console.log('Error with user login:', error);
     if (error.response.status === 401) {
-      // The 401 is the error status sent from passport
-      // if user isn't in the database or
+      // Error status sent from passport if user isn't in the database or
       // if the username and password don't match in the database
       yield put({ type: 'LOGIN_FAILED' });
     } else {
@@ -35,7 +34,7 @@ function* loginUser(action) {
   }
 }
 
-// worker Saga: will be fired on "LOGOUT" actions
+// Saga: will be fired on "LOGOUT" actions
 function* logoutUser(action) {
   try {
     const config = {
@@ -43,8 +42,6 @@ function* logoutUser(action) {
       withCredentials: true,
     };
 
-    // the config includes credentials which
-    // allow the server session to recognize the user
     // when the server recognizes the user session
     // it will end the session
     yield axios.post('/api/user/logout', config);

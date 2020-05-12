@@ -14,6 +14,7 @@ class AdminPage extends Component {
         editedRetailer: null,
     }
 
+    //Clicking the Edit button will toggle the edit form and populate the form with data from that retailer
     toggleEditPanel = (retailer) => {
         console.log('in toggleEditPanel');
         this.setState({
@@ -22,15 +23,18 @@ class AdminPage extends Component {
         });
     }
 
+    //When page loads, retailers list and any edit requests will render to the DOM
     componentDidMount() {
         this.getAllRetailers();
         this.getFeedback();
     }
 
+    //Gets full list of retailers from the database
     getAllRetailers = () => {
         this.props.dispatch({ type: 'GET_ALL_RETAILERS' });
     }
 
+    //Handles change in state for website URL
     handleChange = (propName, event) => {
         console.log('in handleChange', event.target.value);
         this.setState({
@@ -38,6 +42,7 @@ class AdminPage extends Component {
         })
     }
 
+    //Handles change in sizes checked
     handleSizeChange = (sizeName) => {
         if (this.state.editedRetailer.sizes.includes(sizeName)) {
             this.setState({
@@ -58,6 +63,7 @@ class AdminPage extends Component {
         }
     }
 
+    //Handles change in availability options checked
     handleAvailableChange = (availableName) => {
         if (this.state.editedRetailer.available.includes(availableName)) {
             this.setState({
@@ -78,6 +84,7 @@ class AdminPage extends Component {
         }
     }
 
+    //Sends edited retailer info to Edit Retailer Saga, re-renders updated retailer list
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('in handleSubmit');
@@ -88,14 +95,17 @@ class AdminPage extends Component {
         this.getAllRetailers();
     }
 
+    //Deletes retailer data from selected row
     handleDelete = (retailer) => {
         this.props.dispatch({ type: 'DELETE_RETAILER', payload: retailer })
     }
 
+    //Gets all edit requests from the DB
     getFeedback = () => {
         this.props.dispatch({ type: 'GET_ALL_FEEDBACK' });
     }
 
+    //Deletes edit request from selected row
     deleteFeedback = (item) => {
         this.props.dispatch({ type: 'DELETE_FEEDBACK', payload: item })
     }

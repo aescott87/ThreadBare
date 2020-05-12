@@ -9,6 +9,7 @@ import Button from 'muicss/lib/react/button';
 
 class AddRetailerPage extends Component {
 
+    //Set state with all checkboxes set to false
     state = {
         name: '',
         website: 'https://',
@@ -26,6 +27,7 @@ class AddRetailerPage extends Component {
         }
     }
 
+    //Handles change of text inputs
     handleChange = (propertyName, event) => {
         console.log('in handleChange', event.target.value);
         this.setState({
@@ -33,6 +35,7 @@ class AddRetailerPage extends Component {
         })
     }
 
+    //Toggles plus size checkbox to true
     handlePlusChange = () => {
         this.setState({
             ...this.state,
@@ -43,6 +46,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles petite size checkbox to true
     handlePetiteChange = () => {
         this.setState({
             ...this.state,
@@ -53,6 +57,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles x-short inseam checkbox to true
     handleXShortChange = () => {
         this.setState({
             ...this.state,
@@ -63,6 +68,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles short checkbox to true
     handleShortChange = () => {
         this.setState({
             ...this.state,
@@ -73,6 +79,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles long checkbox to true
     handleLongChange = () => {
         this.setState({
             ...this.state,
@@ -83,6 +90,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles x-long checkbox to true
     handleXLongChange = () => {
         this.setState({
             ...this.state,
@@ -93,6 +101,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles in store checkbox to true
     handleInStoreChange = () => {
         this.setState({
             ...this.state,
@@ -103,6 +112,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Toggles online checkbox to true
     handleOnlineChange = () => {
         this.setState({
             ...this.state,
@@ -113,6 +123,7 @@ class AddRetailerPage extends Component {
         });
     }
 
+    //Sends state to New Retailer Saga, sends user to Confirmation page
     handleSubmit = (event) => {
         event.preventDefault();
         console.log( 'in handleSubmit', this.state);

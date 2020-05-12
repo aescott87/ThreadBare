@@ -6,18 +6,22 @@ import Panel from 'muicss/lib/react/panel';
 
 class AllRetailersPage extends Component {
 
+    //Renders full list of retailers upon page load
     componentDidMount() {
         this.getAllRetailers();
     }
 
+    //Gets all retailers from the DB
     getAllRetailers = () => {
         this.props.dispatch({ type: 'GET_ALL_RETAILERS' });
     }
 
+    //Sends user to the Add a Retailer page
     handleGoToAdd = () => {
         this.props.history.push('/add');
     }
 
+    //Sends user to the Edit Request form
     handleGoToEdit = () => {
         this.props.history.push('/edit');
     }
